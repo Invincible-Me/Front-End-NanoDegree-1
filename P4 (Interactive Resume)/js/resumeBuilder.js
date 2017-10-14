@@ -1,23 +1,69 @@
-// Bio Object
-var bio = {
-    "name": "Sagar Choudhary",
-    "role": "Android and Web Developer",
-    "contacts": {
-        "mobile": "+91-9056455979",
-        "email": "<a href='mailto:sagar.choudhary96@gmail.com'>sagar.choudhary96@gmail.com</a>",
-        "github": "<a href='https://goo.gl/IbXnoQ'>sagarchoudhary96</a>",
-        "twitter": "@sa_choudhary",
-        "location": "Gurgaon"
-    },
-    "welcomeMessage": "The only way to great work is to love what you do.",
-    "skills": ["Android Development", "Java", "Python",
-        "JavaScript", "HTML", "CSS", "Bootstrap", "JQuery", "C/C++"
-    ],
-    "biopic": "images/me.png"
-};
+	var bio = {
+		"name" : "Raunak Singh",
+		"role" : "Web Developer",
+		"contacts" : {
+			"mobile" : "8802216369",
+			"email" : "invincibleme.404@gmail.com",
+			"github" : "invincible-Me",
+			"twitter" : "@RaunakS47409218",
+			"location" : "India"
+		},
+		"skills" :["HTML", "Java Script", "css", "Bootstrap","Swimming"],
+		"welcomeMessage": "Welcome to Raunak's resume Site ",
+		"biopic" : "images/fry.JPG"
+	};
 
-// displayBio fuction
-bio.display = function() {
+	var education = {
+		"schools" : [
+		{
+	      "name" : "GNIOT Greater Noida",
+	      "location" : "Greater Noida, UP",
+	      "degree" : "None",
+	      "dates" : "2019" ,
+	      "majors" : ["no majors"]     
+		}
+	   ],	
+	   "onlineCourses" : [
+	   {
+	   	"title": "FrontEnd Nano Degree",
+	   	"school": "Udacity",
+	   	"dates": "2017",
+	   	"url": "https://www.udacity.com"
+	   }
+	  ]
+	};
+
+	var work = {
+	  "jobs": [
+	    {
+	      "employer": "Udacity",
+	      "title": "Mentor",
+	      "location": "India",
+	      "dates": "July 2017 - Current",
+	      "description": "I guide Udacity Nanodegree enrolled students on how to achieve their desired goals."
+	    }
+	  ]
+	};
+
+	var projects = {
+		"projects": [
+		{
+			"title": "Frogger Game",
+			"dates" : "2017",
+			"description" : "Its a simple game in which a boy try to cross path avoiding moving bugs",
+			"images" : ["images/2.png" ]
+		},
+		{
+			"title": "Neighbourhood Map",
+			"dates" : "2017",
+			"description" : "Its a friendly map which includes famous places and their description",
+			"images" : ["images/1.png" ]
+		}
+		]
+	};
+
+	bio.display = function() {
+	   
     $("#header").prepend(HTMLbioPic.replace("%data%", bio.biopic));
     $("#header").prepend(HTMLheaderName.replace("%data%", bio.name), HTMLheaderRole.replace("%data%", bio.role));
 
@@ -39,115 +85,27 @@ bio.display = function() {
         $("#topContacts").append(formattedContactInfo[i]);
         $("#footerContacts").append(formattedContactInfo[i]);
     }
-};
 
-bio.display();
-//Work Object
-var work = {
-    'jobs': [{
-        "employer": "Chitkara University",
-        "title": "Student",
-        "dates": "2015 - Present",
-        "location": "Chitkara university, Village Jhansla, Patiala, Punjab",
-        "description": "I am pursuing my Bachelor degree here."
-    }]
-};
+	};
+	   bio.display();
 
-//displayWork function
-work.display = function() {
-    for (var job in work.jobs) {
-        $("#workExperience").append(HTMLworkStart);
-        $(".work-entry:last").append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer) + HTMLworkTitle.replace("%data%", work.jobs[job].title), HTMLworkDates.replace("%data%", work.jobs[job].dates), HTMLworkLocation.replace("%data%", work.jobs[job].location), HTMLworkDescription.replace("%data%", work.jobs[job].description));
-    }
-};
+	    work.display = function() {
+	            for ( var i = 0 ; i < work.jobs.length ; i++) {
+	     	$("#workExperience").append(HTMLworkStart);
 
-work.display();
+	     	var formattedEmployer = HTMLworkEmployer.replace("%data%" , work.jobs[i].employer);
+	     	var formattedTitle = HTMLworkTitle.replace("%data%" , work.jobs[i].title);
+	     	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+	        $(".work-entry:last").append(formattedEmployerTitle);
+	        var formattedDates = HTMLworkDates.replace("%data%" , work.jobs[i].dates);
+	        $(".work-entry:last").append(formattedDates);
+	        var formattedDescription = HTMLworkDescription.replace("%data%" , work.jobs[i].description);
+	        $(".work-entry:last").append(formattedDescription);
+	     }
+	};
+	 work.display();
 
-//Education Object
-var education = {
-    "schools": [{
-        "name": "Modern Public School",
-        "location": "Modern Public School, Bhiwadi, Rajasthan",
-        "degree": "High School",
-        "majors": ["PCM"],
-        "dates": "2014",
-        "url": "http://mpsbhiwadi.org"
-    }, {
-        "name": "Chitkara University",
-        "location": "Chitkara University, Village Jhansla, Patiala, Punjab",
-        "degree": ["B.E"],
-        "majors": "Computer Science",
-        "dates": "2015-2019",
-        "url": "www.chitkara.edu.in"
-    }],
-    "onlineCourses": [{
-        "title": "1. Intro to Programming Nanodegree",
-        "school": "Udacity",
-        "date": "2016",
-        "url": "https://www.udacity.com/course/intro-to-programming-nanodegree--nd000"
-    }, {
-        "title": "2. Android Development for Beginners",
-        "school": "Udacity",
-        "date": "2016",
-        "url": "https://www.udacity.com/course/android-development-for-beginners--ud837"
-    }, {
-        "title": "3. Intro to Html and Css",
-        "school": "Udacity",
-        "date": "2016",
-        "url": "https://www.udacity.com/course/intro-to-html-and-css--ud304"
-    }]
-};
-
-//displayEducation function
-education.display = function() {
-    for (var school in education.schools) {
-        $("#education").append(HTMLschoolStart);
-        $(".education-entry:last").append(HTMLschoolName.replace("%data%", education.schools[school].name) + HTMLschoolDegree.replace("%data%", education.schools[school].degree), HTMLschoolDates.replace("%data%", education.schools[school].dates), HTMLschoolLocation.replace("%data%", education.schools[school].location), HTMLschoolMajor.replace("%data%", education.schools[school].majors));
-    }
-
-    //online Courses
-    $("#education").append(HTMLonlineClasses);
-    for (var course in education.onlineCourses) {
-        $("#education").append(HTMLschoolStart);
-        $(".education-entry:last").append(HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title) + HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school), HTMLonlineDates.replace("%data%", education.onlineCourses[course].date), HTMLonlineURL.replace("%data%", education.onlineCourses[course].url).replace("#", education.onlineCourses[course].url));
-    }
-};
-
-education.display();
-
-//Projects Object
-var projects = {
-    "projects": [{
-            "title": "Movie Website",
-            "dates": "2016",
-            "description": "I have made this movie website using Python",
-            "images": ["images/movie.png"]
-        },
-
-        {
-            "title": "My 2048",
-            "dates": "2016",
-            "description": "I have made this game as a part of udacity free course.",
-            "images": ["images/game.png"]
-        },
-
-        {
-            "title": " My portfolio",
-            "dates": "2016",
-            "description": "I have made a responsive portfolio page using bootstrap.",
-            "images": ["images/portfolio1.png"]
-        },
-
-        {
-            "title": "Court Counter",
-            "dates": "2015",
-            "description": "This is an android app which demonstrates basics of android fundamentals.",
-            "images": ["images/court_counter.png"]
-        }
-    ]
-};
-
-projects.display = function() {
+	projects.display = function() {
     for (project in projects.projects) {
         $("#projects").append(HTMLprojectStart);
         $(".project-entry:last").append(HTMLprojectTitle.replace("%data%", projects.projects[project].title), HTMLprojectDates.replace("%data%", projects.projects[project].dates) + HTMLprojectDescription.replace("%data%", projects.projects[project].description));
@@ -160,6 +118,59 @@ projects.display = function() {
 };
 
 projects.display();
+ 
 
-// adding map
-$('#mapDiv').append(googleMap);
+	     education.display = function() {
+	        $("#education").append(HTMLschoolStart);
+
+	    for (var i=0;i<education.schools.length;i++) {
+
+		    	var schoolName = HTMLschoolName.replace("%data%" , education.schools[i].name);
+			     $(".education-entry:last").append(schoolName);
+
+			    var schoolLocation = HTMLschoolLocation.replace("%data%" , education.schools[i].location);
+			    $(".education-entry:last").append(schoolLocation);
+
+			    var qualification = HTMLschoolDegree.replace("%data%" , education.schools[i].degree);
+			    $(".education-entry:last").append(qualification);
+
+			    var passed = HTMLschoolDates.replace("%data%" , education.schools[i].dates);
+			    $(".education-entry:last").append(passed);
+
+	                 for (var k = 0; k < education.schools[i].majors.length ; k++) {
+				    var major = HTMLschoolMajor.replace("%data%" , education.schools[k].majors);
+				    $(".education-entry:last").append(major);
+				    }
+		    }
+		    for (var j = 0 ; j < education.onlineCourses.length ; j++) {
+			    var oTitle = HTMLonlineTitle.replace("%data%" , education.onlineCourses[j].title);
+			    $(".education-entry:last").append(oTitle);
+
+			    var oSchool = HTMLonlineSchool.replace("%data%" , education.onlineCourses[j].school);
+			    $(".education-entry:last").append(oSchool);
+
+			    var oDates = HTMLonlineDates.replace("%data%" , education.onlineCourses[j].dates);
+			     $(".education-entry:last").append(oDates);
+
+			    var oUrl = HTMLonlineURL.replace("%data%" , education.onlineCourses[j].url);
+			    $(".education-entry:last").append(oUrl);
+		       }
+	};
+	  education.display();
+
+   
+
+      $("#mapDiv").append(googleMap);
+
+
+
+   
+
+
+
+
+
+   
+
+
+
